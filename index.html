@@ -1,0 +1,56 @@
+<html>
+    <body>
+        <!-- <iframe width="700px" height="600px" src="https://apps.powerapps.com/play/7ef82fb7-1fb1-46c0-a0bf-984acf217c11?source=website&screenColor=rgba(165,34,55,1)" allow="geolocation; microphone; camera"></iframe> -->
+        <h3>1: Match Exact Phrase Only</h3>
+        <textarea rows="5" cols="200" id="content_one">RegExr was created by gskinner.com, and is proudly hosted by Media Temple.
+            Edit the Expression & Text to see matches. Roll over matches or the expression for details. PCRE & JavaScript flavors of RegEx are supported. Validate your expression with Tests mode.
+            The side bar includes a Cheatsheet, full Reference, and Help. You can also Save & Share with the Community, and view patterns you create or favorite in My Patterns.
+            Explore results with the Tools below. Replace & List output custom results. Details lists capture groups. Explain describes your expression in plain English.</textarea><br><br>
+        <input type="text" placeholder="Text to match the content" id="one">
+        <button type="button" onclick="RegexOne()">Click to Match Exact Phrase</button> 
+        <br><br>
+        <h3>2: Match Word or Phrase in a List</h3>
+        <label for="vegetables">Vegetables list :</label>
+        <ul id="vegetables">
+            <li>Potato</li>
+            <li>Carrot</li>
+            <li>Beet root</li>
+            <li>Cabbage</li>
+            <li>Bottle gourd</li>
+            <li>Bitter gourd</li>
+            <li>Tomato</li>
+            <li>Spinach</li>
+            <li>Broccoli</li>
+        </ul><br>
+        <input type="text" placeholder="Text to match the content" id="two">
+        <button type="button" onclick="RegexTwo()">Click to Match Word or Phrase in a List</button>
+        <br><br>   
+        <h3>3: Match word with different spellings or special character</h3>
+        <textarea rows="2" cols="200" id="content_three">Type to check and Access this or paste something.</textarea><br>
+        <p id="replaceable_content"></p>
+        <button type="button" onclick="RegexThree()">Click to Match Special char & diff spelling</button>   
+    </body>
+</html>
+<script>
+    function RegexOne(){
+        var input_content = document.getElementById("content_one").value;
+        var pattern1 = new RegExp(document.getElementById("one").value, 'ig');
+        var match = input_content.match(pattern1);
+        match ? alert("Matches found : " + match.length) : alert("Match not found");
+    }
+    function RegexTwo(){
+        var pattern2 = new RegExp(document.getElementById("two").value, "ig");
+        var vegetables = document.getElementById("vegetables").getElementsByTagName("li");
+        var match;
+        //for(i=0; i<vegetables.length; i++){
+            match = vegetables[i].innerText.match(pattern2) ? true:false;
+            if(match) { break; }
+        //}
+        //match ? alert("matches found : " + match.length) : alert("match not found");
+    }
+    function RegexThree(){
+        var input_content = document.getElementById("content_three").value;
+        //var replaceable_chars = {'a':'@','A':'@','s':'$','S':'$','i':'!','I':'!','and':'&','or':'|'};
+        //document.getElementById("replaceable_content").innerHTML = input_content.replace(/and|a|s|i|or/gi, function(matched){return replaceable_chars[matched]});
+    }
+</script>
