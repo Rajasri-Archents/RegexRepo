@@ -35,22 +35,23 @@
     function RegexOne(){
         var input_content = document.getElementById("content_one").value;
         var pattern1 = new RegExp(document.getElementById("one").value, 'ig');
-        var match = input_content.match(pattern1);
-        match ? alert("Matches found : " + match.length) : alert("Match not found");
+        input_content.match(pattern1) ? alert("Matches found : ") : alert("Match not found");
+        //match ? alert("Matches found : " + match.length) : alert("Match not found");
     }
     function RegexTwo(){
         var pattern2 = new RegExp(document.getElementById("two").value, "ig");
         var vegetables = document.getElementById("vegetables").getElementsByTagName("li");
         var match;
-        //for(i=0; i<vegetables.length; i++){
-            match = vegetables[i].innerText.match(pattern2) ? true:false;
-            if(match) { break; }
-        //}
-        //match ? alert("matches found : " + match.length) : alert("match not found");
+        var matches = [];
+        var matches_count = 0;
+        for(i=0; i<vegetables.length; i++){
+            if(vegetables[i].innerText.search(pattern2)>0) { matches_count++; match = true; matches.push(vegetables[i].innerText); }
+        }
+        match ? alert("matches found : " + matches_count + "\nmatches are : " + matches) : alert("match not found");
     }
     function RegexThree(){
         var input_content = document.getElementById("content_three").value;
-        //var replaceable_chars = {'a':'@','A':'@','s':'$','S':'$','i':'!','I':'!','and':'&','or':'|'};
-        //document.getElementById("replaceable_content").innerHTML = input_content.replace(/and|a|s|i|or/gi, function(matched){return replaceable_chars[matched]});
+        var replaceable_chars = {'a':'@','A':'@','s':'$','S':'$','i':'!','I':'!','and':'&','or':'|'};
+        document.getElementById("replaceable_content").innerHTML = input_content.replace(/and|a|s|i|or/gi, function(matched){return replaceable_chars[matched]});
     }
 </script>
